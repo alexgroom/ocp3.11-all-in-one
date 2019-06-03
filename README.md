@@ -9,7 +9,7 @@ Storage is provided via NFS, again colocated on the single system.
 
 DNS is provided by a free dynamic DNS service dynu.com. This holds a wilcard A record mapping *.<host>.dynu.net to the single system.
   
-![alt text](https://raw.githubusercontent.com/alexgroom/ocp3.11-all-in-one/master/dnu.png)
+![alt text](https://raw.githubusercontent.com/alexgroom/ocp3.11-all-in-one/master/dynu.png)
 
 This all installs on RHEL 7.6. Scripts enclosed to add repos etc.
 
