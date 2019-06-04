@@ -7,7 +7,7 @@ This inventory and scripts builds a all-in-one OCP cluster on a single system, s
 
 Storage is provided via NFS, again colocated on the single system.
 
-DNS is provided by a free dynamic DNS service dynu.com. This holds a wilcard A record mapping *.<host>.dynu.net to the single system.
+DNS is provided by a free dynamic DNS service dynu.com. This holds a wilcard A record mapping *.apps.<host>.dynu.net to the single system and also a fixed (non-wild card) record to <host>.dynu.net eg:
   
 ![alt text](https://github.com/alexgroom/ocp3.11-all-in-one/blob/master/dynu.png)
 
@@ -19,3 +19,5 @@ Strange issue found while trying to start kube-catalog service. The apiserver fa
 Reverse lookup on that address returns Telenet in Söflingen, Germany!!
 
 Fixed this by patching the iptables to route this IP back to the host IP
+
+Resolv.conf gets setup wrongly during installation, a corrected version is attached. By default it assumes dynu.net is the search root which is wrong, since things don't start until <host>.dynu.net.
