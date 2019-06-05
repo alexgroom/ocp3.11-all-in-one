@@ -2,7 +2,7 @@
 echo "**************** uninstalling **********************************************"
 echo "****************"
 echo "****************"
-#ansible-playbook -i inventorywc.ini /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
+ansible-playbook -i inventorywc.ini /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
 echo "**************** PREREQUISITES **********************************************"
 echo "****************"
 echo "****************"
