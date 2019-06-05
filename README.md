@@ -5,7 +5,7 @@ Based on the work done here https://blog.openshift.com/openshift-all-in-one-aio-
 
 This inventory and scripts builds a all-in-one OCP cluster on a single system, so one master, one node, one etcd all colocated.
 
-Storage is provided via NFS, again colocated on the single system.
+Storage is provided via NFS, again colocated on the single system and created by running pv.sh
 
 DNS is provided by a free dynamic DNS service dynu.com. This holds a wilcard A record mapping *.apps.<host>.dynu.net to the single system and also a fixed (non-wild card) record to <host>.dynu.net eg:
   
@@ -13,11 +13,4 @@ DNS is provided by a free dynamic DNS service dynu.com. This holds a wilcard A r
 
 This all installs on RHEL 7.6. Scripts enclosed to add repos etc.
 
-Bugs:
-
-Strange issue found while trying to start kube-catalog service. The apiserver fails making a reference to <HOST>.dynu.net:2379 which then mystically maps to the following IP: 5.199.182.31.
-Reverse lookup on that address returns Telenet in Söflingen, Germany!!
-
-Fixed this by patching the iptables to route this IP back to the host IP
-
-Resolv.conf gets setup wrongly during installation, a corrected version is attached. By default it assumes dynu.net is the search root which is wrong, since things don't start until <host>.dynu.net.
+Resolv.conf gets setup wrongly updated by NetworkManager based on dynmaic nature of network card, a corrected version is attached. By default it assumes dynu.net is the search root which is wrong, since things don't start until <host>.dynu.net.
