@@ -13,4 +13,6 @@ DNS is provided by a free dynamic DNS service dynu.com. This holds a wilcard A r
 
 This all installs on RHEL 7.6. Scripts enclosed to add repos etc.
 
-Resolv.conf gets setup wrongly updated by NetworkManager based on dynmaic nature of network card, a corrected version is attached. By default it assumes dynu.net is the search root which is wrong, since things don't start until <host>.dynu.net.
+Resolv.conf gets setup wrongly updated by NetworkManager based on dynamic nature of network card, a corrected version is included. By default it assumes dynu.net is the search root which is wrong, since things don't start until <host>.dynu.net. Failure to get this correct with result in apiserver failing to start or failing to access github due to peer certificates.
+  
+Swap space. Suggest for a single node/master system that re-enabling swap makes sense since there is no alternate node to load balance pods across to. Edit /etc/fstab to re-enable swap that the OCP install disables. With an SSD disk on a single system this is probably better use of local resources than denying service to a pod.
